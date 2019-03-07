@@ -1,0 +1,16 @@
+{
+    "name": "aurelzefi/database",
+    "description": "A very simple database package.",
+    "authors": [
+        {
+            "name": "Aurel Zefi",
+            "email": "aurelzefi1994@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Database\\": "src/Database/"
+        }
+    }
+}

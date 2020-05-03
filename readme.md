@@ -126,7 +126,7 @@ Database::table('users')->insert([
 ]);
 ```
 
-### Store Data And Get the ID
+### Store Data And Get The ID
 
 ```php
 $id = Database::table('users')->insertGetId([

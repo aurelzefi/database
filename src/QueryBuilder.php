@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Aurel\Database;
 
 use stdClass;
 
@@ -9,7 +9,7 @@ class QueryBuilder
     /**
      * The database connection instance.
      *
-     * @var \Database\Connection
+     * @var \Aurel\Database\Connection
      */
     protected $connection;
 
@@ -86,7 +86,7 @@ class QueryBuilder
     /**
      * Create a new query builder instance.
      *
-     * @param \Database\Connection $connection
+     * @param  \Aurel\Database\Connection  $connection
      * @return void
      */
     public function __construct(Connection $connection)
@@ -97,7 +97,7 @@ class QueryBuilder
     /**
      * Set the database table for the query.
      *
-     * @param string $table
+     * @param  string  $table
      * @return $this
      */
     public function from($table)
@@ -110,7 +110,7 @@ class QueryBuilder
     /**
      * Set the columns to be selected for the query.
      *
-     * @param array $columns
+     * @param  array  $columns
      * @return $this
      */
     public function select($columns = ['*'])
@@ -147,7 +147,7 @@ class QueryBuilder
     /**
      * Insert a new record into the database.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      * @return bool
      */
     public function insert(array $attributes)
@@ -158,7 +158,7 @@ class QueryBuilder
     /**
      * Insert a new record into the database and get the last inserted ID.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      * @return int
      */
     public function insertGetId(array $attributes)
@@ -171,7 +171,7 @@ class QueryBuilder
     /**
      * Update a record in the database.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      * @return bool
      */
     public function update(array $attributes)
@@ -208,7 +208,7 @@ class QueryBuilder
     /**
      * Get the insert query.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      * @return string
      */
     protected function getInsertQuery(array $attributes)
@@ -227,7 +227,7 @@ class QueryBuilder
     /**
      * Get the update query.
      *
-     * @param array $attributes
+     * @param  array  $attributes
      * @return string
      */
     protected function getUpdateQuery(array $attributes)
@@ -314,9 +314,9 @@ class QueryBuilder
     /**
      * Add a "where" statement in the query.
      *
-     * @param string $where
-     * @param array $parameters
-     * @param string $type
+     * @param  string  $where
+     * @param  array  $parameters
+     * @param  string  $type
      * @return $this
      */
     public function where($where, array $parameters = [], $type = 'and')
@@ -333,8 +333,8 @@ class QueryBuilder
     /**
      * Add an "or where" statement in the query.
      *
-     * @param string $where
-     * @param array $parameters
+     * @param  string  $where
+     * @param  array  $parameters
      * @return $this
      */
     public function orWhere($where, array $parameters = [])
@@ -345,7 +345,7 @@ class QueryBuilder
     /**
      * Add an "inner join" statement in the query.
      *
-     * @param string $join
+     * @param  string  $join
      * @return $this
      */
     public function innerJoin($join)
@@ -356,7 +356,7 @@ class QueryBuilder
     /**
      * Add a "left join" statement in the query.
      *
-     * @param string $join
+     * @param  string  $join
      * @return $this
      */
     public function leftJoin($join)
@@ -367,7 +367,7 @@ class QueryBuilder
     /**
      * Add a "cross join" statement in the query.
      *
-     * @param string $join
+     * @param  string  $join
      * @return $this
      */
     public function crossJoin($join)
@@ -378,8 +378,8 @@ class QueryBuilder
     /**
      * Add a "join" statement of the given type in the query.
      *
-     * @param string $join
-     * @param string $type
+     * @param  string  $join
+     * @param  string  $type
      * @return $this
      */
     protected function join($join, $type)
@@ -392,8 +392,8 @@ class QueryBuilder
     /**
      * Add an "order by" statement in the query.
      *
-     * @param string $column
-     * @param string $direction
+     * @param string  $column
+     * @param string  $direction
      * @return $this
      */
     public function orderBy($column, $direction = 'asc')
@@ -406,7 +406,7 @@ class QueryBuilder
     /**
      * Add a "group by" statement in the query.
      *
-     * @param string $column
+     * @param  string  $column
      * @return $this
      */
     public function groupBy($column)
@@ -419,7 +419,7 @@ class QueryBuilder
     /**
      * Add the "limit" option in the query.
      *
-     * @param int $limit
+     * @param  int  $limit
      * @return $this
      */
     public function limit($limit)
@@ -432,7 +432,7 @@ class QueryBuilder
     /**
      * Add the "offset" option in the query.
      *
-     * @param int $offset
+     * @param  int  $offset
      * @return $this
      */
     public function offset($offset)
@@ -461,7 +461,7 @@ class QueryBuilder
     /**
      * Set the class, instances of which the results will be retrieved.
      *
-     * @param string $class
+     * @param  string  $class
      * @return $this
      */
     public function asInstancesOf($class)
@@ -474,9 +474,9 @@ class QueryBuilder
     /**
      * Paginate the query builder results.
      *
-     * @param int $perPage
-     * @param string $pageName
-     * @return \Database\Paginator
+     * @param  int  $perPage
+     * @param  string  $pageName
+     * @return \Aurel\Database\Paginator
      */
     public function paginate($perPage = 15, $pageName = 'page')
     {
@@ -492,7 +492,7 @@ class QueryBuilder
     /**
      * Get a clone for the query builder.
      *
-     * @return \Database\QueryBuilder
+     * @return \Aurel\Database\QueryBuilder
      */
     protected function getClone()
     {

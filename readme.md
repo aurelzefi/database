@@ -1,7 +1,42 @@
-Connecting to the database
+# Database
+
+A small package that allows yout to easily interact with MySQL databases.
+
+## Requirements
+
+- PHP 7.4 or higher
+
+## Installation
+
+Clone this repo, add the package to your repositories and then require it:
+
+```bash
+git clone git@github.com:aurelzefi/database.git
+```
+
+```json
+"repositories": [
+    {
+        "type": "path",
+        "url": "./../database"
+    }
+]
+```
+
+```bash
+composer require aurelzefi/database
+```
+
+## Usage
 
 ```php
-\Database\Database::setConfig([
+use Aurel\Database\Database;
+```
+
+### Create A New Connection
+
+```php
+Database::setConfig([
     'database' => 'your-database',
     'host' => 'localhost',
     'username' => 'your-username',
@@ -9,89 +44,101 @@ Connecting to the database
 ]);
 ```
 
-Using the Query Builder
+### Get Records
 
-Get multiple records
 ```php
-$users = \Database\Database::table('users')->get();
+Database::table('users')->get();
 ```
 
-Get a single record
+### Get A Single Record
+
 ```php
-$user = \Database\Database::table('users')->where('id = :id', ['id' => 1])->first();
+Database::table('users')->where('id = :id', ['id' => 1])->first();
 ```
 
-Specifying columns to select
+### Select Specific Columns
+
 ```php
-$users = \Database\Database::table('users')->select('id', 'username')->get();
+Database::table('users')->select('id', 'username')->get();
 ```
 
-Using Wheres
+### Using Where Clauses
+
 ```php
-$users = \Database\Database::table('users')
-                ->where('id = :id', ['id' => 1])
-                ->orWhere('code is not null')
-                ->get();
+Database::table('users')
+    ->where('id = :id', ['id' => 1])
+    ->orWhere('code is not null')
+    ->get();
 ```
 
-Using Joins, Order By, Group By
+### Using Joins, Order By and Group By
+
 ```php
-$users = \Database\Database::table('users')
-                ->select('users.*', 'posts.id post_id')
-                ->innerJoin('posts on users.id = posts.user_id') // the same for leftJoin() and crossJoin()
-                ->orderBy('users.id', 'asc')
-                ->orderBy('users.is_admin', 'desc')
-                ->groupBy('users.id')
-                ->get();
+Database::table('users')
+    ->select('users.*', 'posts.id post_id')
+    ->innerJoin('posts on users.id = posts.user_id')
+    ->orderBy('users.id', 'asc')
+    ->orderBy('users.is_admin', 'desc')
+    ->groupBy('users.id')
+    ->get();
 ```
 
-Using Limit and Offset
+### Using Limit and Offset
+
 ```php
-$users = \Database\Database::table('users')->limit(10)->offset(10)->get();
+Database::table('users')->limit(10)->offset(10)->get();
 ```
 
-Get the count of the selected records
+### Get The Count
+
 ```php
-\Database\Database::table('users')->count();
+Database::table('users')->count();
 ```
 
-Get records as instances of a given class
+### Get Records As Instances Of A Given Class
+
 ```php
-$users = \Database\Database::table('users')->asInstancesOf(Model::class)->get();
+Database::table('users')->asInstancesOf(Model::class)->get();
 ```
 
-Paginating Query Builder Results
+### Using Pagination
+
 ```php
-$users = \Database\Database::table('users')->paginate();
-$users = \Database\Database::table('users')->paginate(20);
+Database::table('users')->paginate();
+Database::table('users')->paginate(20);
 ```
-That will return an instance of ```\Database\Paginator``` and you can get the underlying
-items by calling ```$users->items()```, or you can loop through the items directly:
+
+That will return an instance of `\Aurel\Database\Paginator` and you can get the underlying
+items by calling `$users->items()`, or you can loop through the items directly:
+
 ```php
 foreach ($users as $user) {
     echo $user->id;
 }
 ```
 
-Store data
+### Store Data
+
 ```php
-\Database\Database::table('users')->insert([
+Database::table('users')->insert([
     'name' => 'Aurel Zefi',
     'email' => 'aurelzefi1994@gmail.com',
 ]);
 ```
 
-Store data and get the id
+### Store Data And Get the ID
+
 ```php
-$id = \Database\Database::table('users')->insertGetId([
+$id = Database::table('users')->insertGetId([
     'name' => 'Aurel Zefi',
     'email' => 'aurelzefi1994@gmail.com',
 ]);
 ```
 
-Update a record
+### Update A Record
+
 ```php
-\Database\Database::table('users')
+Database::table('users')
     ->where('id = :id', ['id' => 1])
     ->update([
         'name' => 'Aurel Zefi',
@@ -99,15 +146,20 @@ Update a record
     ]);
 ```
 
-Delete a record
+### Delete A Record
+
 ```php
-\Database\Database::table('users')->where('id = :id', ['id' => 1])->delete();
+Database::table('users')->where('id = :id', ['id' => 1])->delete();
 ```
 
-If the query you need is more complex than the query builder can handle, then just use the methods in the Database directly:
+### Using Database Methods Directly
+
+If the query you need is more complex than the query builder can handle, then just use the methods in the `Aurel\Database\Database` directly:
+
 ```php
-\Database\Database::select('select * from users where id = :id', ['id' => 1]);
-\Database\Database::selectOne('select * from users where id = :id', ['id' => 1]);
-\Database\Database::insert('insert into users (name) values (:name)', ['name' => 'Aurel Zefi']);
-\Database\Database::update('update users set name = :name where id = :id', ['id' => 1, 'name' => 'Aurel Zefi']);
-\Database\Database::delete('delete from users where id = :id', ['id' => 1]);
+Database::select('select * from users where id = :id', ['id' => 1]);
+Database::selectOne('select * from users where id = :id', ['id' => 1]);
+Database::insert('insert into users (name) values (:name)', ['name' => 'Aurel Zefi']);
+Database::update('update users set name = :name where id = :id', ['id' => 1, 'name' => 'Aurel Zefi']);
+Database::delete('delete from users where id = :id', ['id' => 1]);
+```

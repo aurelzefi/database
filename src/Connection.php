@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Aurel\Database;
 
 use PDO;
 use stdClass;
@@ -17,7 +17,7 @@ class Connection
     /**
      * Create a new connection instance.
      *
-     * @param \PDO $pdo
+     * @param  \PDO  $pdo
      * @return void
      */
     public function __construct(PDO $pdo)
@@ -38,8 +38,8 @@ class Connection
     /**
      * Set the database table for the query builder.
      *
-     * @param string $table
-     * @return \Database\QueryBuilder
+     * @param  string  $table
+     * @return \Aurel\Database\QueryBuilder
      */
     public function table($table)
     {
@@ -49,7 +49,7 @@ class Connection
     /**
      * Get a new query builder instance.
      *
-     * @return \Database\QueryBuilder
+     * @return \Aurel\Database\QueryBuilder
      */
     public function query()
     {

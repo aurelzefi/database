@@ -1,16 +1,26 @@
 {
     "name": "aurelzefi/database",
-    "description": "A very simple database package.",
+    "description": "A small package that allows yout to easily interact with MySQL databases.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Aurel Zefi",
             "email": "aurelzefi1994@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.4",
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
-            "Database\\": "src/"
+            "Aurel\\Database\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

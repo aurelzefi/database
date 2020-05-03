@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Aurel\Database;
 
 use ArrayIterator;
 use IteratorAggregate;
@@ -45,11 +45,11 @@ class Paginator implements IteratorAggregate
     /**
      * Create a new paginator instance.
      *
-     * @param array $items
-     * @param int $total
-     * @param int $perPage
-     * @param int $currentPage
-     * @param string $pageName
+     * @param  array  $items
+     * @param  int  $total
+     * @param  int  $perPage
+     * @param  int  $currentPage
+     * @param  string  $pageName
      * @return void
      */
     public function __construct($items, $total, $perPage, $currentPage, $pageName = 'page')

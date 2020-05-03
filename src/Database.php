@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Aurel\Database;
 
 use PDO;
 
@@ -16,7 +16,7 @@ class Database
     /**
      * The database connection instance.
      *
-     * @var \Database\Connection
+     * @var \Aurel\Database\Connection
      */
     protected static $connection;
 
@@ -53,7 +53,7 @@ class Database
     /**
      * Get the database connection instance.
      *
-     * @return \Database\Connection
+     * @return \Aurel\Database\Connection
      */
     public static function connection()
     {
@@ -71,8 +71,8 @@ class Database
     /**
      * Get a query builder instance.
      *
-     * @param string $table
-     * @return \Database\QueryBuilder
+     * @param  string  $table
+     * @return \Aurel\Database\QueryBuilder
      */
     public static function table($table)
     {
@@ -82,8 +82,8 @@ class Database
     /**
      * Dynamically pass methods to the database connection.
      *
-     * @param string $method
-     * @param array $parameters
+     * @param  string  $method
+     * @param  array  $parameters
      * @return mixed
      */
     public static function __callStatic($method, $parameters)

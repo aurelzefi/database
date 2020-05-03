@@ -1,6 +1,6 @@
 {
     "name": "aurelzefi/database",
-    "description": "A small package that allows yout to easily interact with MySQL databases.",
+    "description": "A small package that allows you to easily interact with MySQL databases.",
     "license": "MIT",
     "authors": [
         {

@@ -1,6 +1,6 @@
 # Database
 
-A small package that allows yout to easily interact with MySQL databases.
+A small package that allows you to easily interact with MySQL databases.
 
 ## Requirements
 

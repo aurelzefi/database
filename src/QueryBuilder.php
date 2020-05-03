@@ -392,8 +392,8 @@ class QueryBuilder
     /**
      * Add an "order by" statement in the query.
      *
-     * @param string  $column
-     * @param string  $direction
+     * @param  string  $column
+     * @param  string  $direction
      * @return $this
      */
     public function orderBy($column, $direction = 'asc')

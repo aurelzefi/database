@@ -59,9 +59,9 @@ class Connection
     /**
      * Run a select statement against the database.
      *
-     * @param string $query
-     * @param array $parameters
-     * @param string $class
+     * @param  string  $query
+     * @param  array  $parameters
+     * @param  string  $class
      * @return array
      */
     public function select($query, array $parameters = [], $class = stdClass::class)
@@ -76,9 +76,9 @@ class Connection
     /**
      * Run a select statement against the database and get a single result.
      *
-     * @param string $query
-     * @param array $parameters
-     * @param string $class
+     * @param  string  $query
+     * @param  array  $parameters
+     * @param  string  $class
      * @return mixed
      */
     public function selectOne($query, array $parameters = [], $class = stdClass::class)
@@ -93,8 +93,8 @@ class Connection
     /**
      * Run an insert statement against the database.
      *
-     * @param string $query
-     * @param array $parameters
+     * @param  string  $query
+     * @param  array  $parameters
      * @return bool
      */
     public function insert($query, array $parameters = [])
@@ -105,8 +105,8 @@ class Connection
     /**
      * Run an update statement against the database.
      *
-     * @param string $query
-     * @param array $parameters
+     * @param  string  $query
+     * @param  array  $parameters
      * @return bool
      */
     public function update($query, array $parameters = [])
@@ -117,8 +117,8 @@ class Connection
     /**
      * Run a delete statement against the database.
      *
-     * @param string $query
-     * @param array $parameters
+     * @param  string  $query
+     * @param  array  $parameters
      * @return bool
      */
     public function delete($query, array $parameters = [])
@@ -129,8 +129,8 @@ class Connection
     /**
      * Execute a given SQL statement.
      *
-     * @param string $query
-     * @param array $parameters
+     * @param  string  $query
+     * @param  array  $parameters
      * @return bool
      */
     protected function persist($query, array $parameters)
